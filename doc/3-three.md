@@ -18,3 +18,5 @@ THREEJS 是 WEBGL 的封装
 * WebGLRenderer 渲染器
 * Camera 相机
 * Scene 场景
+
+右手坐标系

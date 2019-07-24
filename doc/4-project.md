@@ -95,3 +95,39 @@ MVP 版本功能点
 MVC VS MVVM
 * MVC：View 和 Model 通常是相互影响的，因此增加 Controller 这个中间角色来解耦代码，模块划分
 * MVVM：将 Controller 层换成 ViewModel，ViewModel 层的数据驱动完全是在框架中进行管理，无需开发者进行控制逻辑的开发
+
+项目 scene 和 camera 设置：相机整体斜上方看原点位置
+
+光照的原理
+* 光源类型
+  * 点光源（PointLight）
+  * 平行光（DirectionalLight）
+  * 环境光（黑夜 AmbientLight）
+  * 聚光灯（SpotLight）
+* 光照模型：真实世界物体材质进行最优化的模拟
+  * Phong 模型：常规和经典模型
+  * Lambert 模型：理想的漫反射模型，毛玻璃，粗糙材质模型，和视点无关
+  * Blinn-Phong：基于 Phong 模型上的性能优化，大部分情况下不会影响效果，但减少了计算量
+  * Cook-Torrance：相对复杂模型
+* Phong Reflection = Ambient + Diffuse + Sepcular
+  * Ambient：全局光，没有光照强弱，物体本身区域范围和基本轮廓
+  * Diffuse：漫反射，不同部分会有光照差异
+  * Sepcular：金属高光
+
+粗糙的物体表面向各个方向等强度地反射光，这个等同地散射现象称为光的漫反射（Diffuse Reflection）
+
+漫反射模型和视点无关，与入射光、入射点、物体材质相关
+
+漫反射模型可以表现出粗糙表面的关照现象，如墙壁、纸张等，但是无法很好的表现出光泽金属所有的镜面反射
+
+Phong 模型认为镜面反射的光强与反射光线和视线的夹角相关
+
+纹理、阴影、帧缓冲区
+* 纹理：纹理坐标系统 => WebGL 坐标系统，坐标映射
+  * WebGL api：sampler2D texture2D
+* framebuffer
+  * 帧缓冲区对象可以用来代替颜色缓冲区和深度缓冲区
+  * 绘制在帧缓冲区中的对象并不会直接显示在 canvas 上，你可以先对帧缓冲区的内容进行一些处理在显示，或直接用其中的内容作为纹理图像
+  * 常用于动态纹理的生成
+* 使用 shadowmap 生成阴影
+  * 使用帧缓冲区通过纹理维护 shadowmap，然后在渲染的时候，使用该 shadow map 来判断当前视角下，点是否在阴影的区域之内，从而完成了阴影的绘制
