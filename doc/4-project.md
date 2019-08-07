@@ -33,18 +33,25 @@ MVP 版本功能点
 - 增加音乐效果
 - 增加 block 类型和纹理类型
 
+项目结构
+
+- ES6
+- OOP
+- 通用功能抽象
+- MVC
+
 代码结构
 
 ```shell
 ├── confs # 配置相关信息
-├── libs # 通用功能
-├── res # 静态资源
+├── libs # 通用功能模块的抽象
+├── res # 静态资源（音频、图片、字体）
 ├── src # 源代码
-    ├── block
-    ├── game
-    ├── objects // 场景常用对象
-    ├── pages
-    ├── scene
+    ├── block # 区块
+    ├── game # mvc 结构
+    ├── objects # 场景常用对象
+    ├── pages # 页面
+    ├── scene # 渲染核心元素
     ├── utils
     ├── view2d
     ├── view3d
