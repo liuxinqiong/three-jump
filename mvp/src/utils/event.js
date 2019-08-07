@@ -9,7 +9,7 @@ class Event {
     }
 
     notify(args) {
-        for(let i = 0; i < this._listeners.length; i++) {
+        for (let i = 0; i < this._listeners.length; i++) {
             this._listeners[i](this.sender, args)
         }
     }

@@ -7,14 +7,15 @@ class GameController {
         this.gameModel = gameModel
         this.gameModel.stageChange.attach((sender, args) => {
             const stage = args.stage;
-            switch(stage) {
+            switch (stage) {
                 case 'game-over':
                     this.gameView.showGameOverPage()
                     break
                 case 'game':
                     this.gameView.showGamePage()
                     break
-                default: break;
+                default:
+                    break;
             }
         })
     }
