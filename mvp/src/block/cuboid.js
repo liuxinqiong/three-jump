@@ -1,5 +1,6 @@
 import BaseBlock from './base'
 
+// 立方体
 export default class Cuboid extends BaseBlock {
     constructor(x, y, z, width) {
         super('cuboid')

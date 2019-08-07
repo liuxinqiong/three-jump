@@ -1,5 +1,5 @@
 import BaseBlock from './base'
-
+// 圆柱体
 export default class Cylinder extends BaseBlock {
     constructor(x, y, z, width) {
         super('cylinder')
