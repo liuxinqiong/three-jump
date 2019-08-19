@@ -90,3 +90,29 @@ Geometry
 - MeshPhongMaterial：一种用于具有镜面高光的光泽表面的材质
 - MeshBasicMaterial：一个以简单着色（平面或线框）方式来绘制几何体的材质。这种材质不受光照的影响。
 - ShadowMaterial：此材质可以接收阴影，但在其他方面完全透明。
+
+texture needUpdate?
+
+scene getObjectByName
+
+释放内存
+
+```js
+deleteObjectsFromScene () {
+    let obj = this.scene.instance.getObjectByName('block')
+    while (obj) {
+      this.scene.instance.remove(obj)
+      if (obj.geometry) {
+        obj.geometry.dispose()
+      }
+      if (obj.material) {
+        obj.material.dispose()
+      }
+      obj = this.scene.instance.getObjectByName('block')
+    }
+    this.scene.instance.remove(this.bottle.obj)
+    this.scene.instance.remove(this.ground.instance)
+  }
+```
+
+customAnimation
